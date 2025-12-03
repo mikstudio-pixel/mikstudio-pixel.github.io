@@ -19,10 +19,17 @@
 
     // Vytvoření synchronizovaného čísla na všech třech stěnách
     function createSyncedNumber(initialOffset = 0) {
-        // Kontrola maximálního počtu
+        // Kontrola maximálního počtu - musíme odstranit nejstarší čísla ze všech stěn
         const existingNumbers = floorContent.querySelectorAll('.falling-num');
         if (existingNumbers.length >= config.maxNumbers) {
-            return;
+            // Najdeme nejstarší ID
+            const oldest = existingNumbers[0];
+            if (oldest) {
+                const syncId = oldest.dataset.syncId;
+                // Odstraníme všechna čísla s tímto ID (ze všech stěn)
+                const toRemove = document.querySelectorAll(`[data-sync-id="${syncId}"]`);
+                toRemove.forEach(el => el.remove());
+            }
         }
 
         // Generování parametrů - STEJNÉ pro všechny stěny

@@ -21,12 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const backRect = document.querySelector('.back-rect');
 
+    // Check if we're on practice scene
+    const isPracticeScene = document.querySelector('.practice-scene') !== null;
+
     let state = {
         roomDepth: parseInt(depthSlider.value),
         roomHeight: window.innerHeight, // Matching CSS 100vh
         scrollPos: 0,
         maxScroll: 5000,
-        initialRoomDepth: parseInt(depthSlider.value) // Store initial depth for practice scene
+        initialRoomDepth: parseInt(depthSlider.value), // Store initial depth for practice scene
+        introAnimationDone: false
     };
 
     // Initial setup
@@ -35,6 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial positions - start with first item visible
     // We call updateContentPositions in the loop, but good to init
     updateContentPositions();
+
+    // Intro Animation - only on index page (not practice)
+    if (!isPracticeScene) {
+        performIntroAnimation();
+    }
 
     // Event Listeners
     depthSlider.addEventListener('input', (e) => {
@@ -49,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Custom Scroll Logic
     let targetScroll = 0;
-    const isPracticeScene = document.querySelector('.practice-scene') !== null;
     
     window.addEventListener('wheel', (e) => {
         e.preventDefault(); // Prevent default to control the experience fully
@@ -62,6 +70,62 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetScroll > maxScroll) targetScroll = maxScroll;
         
     }, { passive: false });
+
+    // Intro Animation Function
+    function performIntroAnimation() {
+        const startDepth = 3000; // Nejvzdálenější
+        const endDepth = 500;    // Nejbližší
+        const depthDuration = 2000; // ms - délka animace perspektivy
+        const scrollAmount = 2150;   // px - kolik scrollnout
+        const scrollDuration = 1600;  // ms - délka scroll animace
+        const scrollStartAt = 0.3; // 0-1: Kdy začít scroll (0 = hned, 0.5 = v polovině depth animace, 1 = po depth animaci)
+        
+        const scrollStartTime = depthDuration * scrollStartAt;
+        const totalDuration = Math.max(depthDuration, scrollStartTime + scrollDuration);
+        
+        const startTime = Date.now();
+        
+        // Nastavit počáteční hloubku
+        depthSlider.value = startDepth;
+        updateRoomDepth(startDepth);
+        
+        function animateIntro() {
+            const elapsed = Date.now() - startTime;
+            
+            // Animace hloubky (běží celou depthDuration)
+            if (elapsed < depthDuration) {
+                const progress = elapsed / depthDuration;
+                const eased = easeInOutCubic(progress);
+                const currentDepth = startDepth + (endDepth - startDepth) * eased;
+                
+                depthSlider.value = currentDepth;
+                updateRoomDepth(currentDepth);
+            }
+            
+            // Scroll animace (začíná v scrollStartTime)
+            if (elapsed >= scrollStartTime && elapsed < scrollStartTime + scrollDuration) {
+                const scrollProgress = (elapsed - scrollStartTime) / scrollDuration;
+                const easedScroll = easeInOutCubic(scrollProgress);
+                targetScroll = scrollAmount * easedScroll;
+            }
+            
+            // Pokračuj dokud není hotovo vše
+            if (elapsed < totalDuration) {
+                requestAnimationFrame(animateIntro);
+            } else {
+                state.introAnimationDone = true;
+            }
+        }
+        
+        animateIntro();
+    }
+    
+    // Easing funkce pro plynulejší animaci
+    function easeInOutCubic(t) {
+        return t < 0.5 
+            ? 4 * t * t * t 
+            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
 
     // Animation Loop
     function animate() {
