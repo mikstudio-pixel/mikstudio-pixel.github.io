@@ -20,9 +20,15 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden; /* We will implement custom scroll */
+    touch-action: none; /* Disable native scroll so JS can drive depth */
+    overscroll-behavior: contain; /* Avoid browser pull-to-refresh/overscroll */
     background-color: var(--bg-color);
     font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     color: var(--main-color);
+}
+
+html, .scene, .room {
+    touch-action: none;
 }
 
 /* UI Overlay */

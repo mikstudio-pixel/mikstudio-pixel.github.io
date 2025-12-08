@@ -107,52 +107,39 @@ document.addEventListener('DOMContentLoaded', () => {
         animate();
     }
 
-    // Scroll Handling (wheel + touch)
+    // Scroll Handling (mouse wheel + touch swipe)
     const wheelSpeed = 2.5;
-    const touchSpeed = 4;
-    let touchStartY = null;
-
-    function clampScroll() {
-        // Limit scroll
-        // Min: 0 (start)
-        // Max: state.maxScroll (end of tunnel)
-        state.targetScrollZ = Math.max(0, Math.min(state.targetScrollZ, state.maxScroll));
-    }
+    const touchMultiplier = 3; // Stronger response for shorter swipe distance
+    let lastTouchY = null;
 
     function applyScrollDelta(delta) {
         state.targetScrollZ += delta;
-        clampScroll();
+        state.targetScrollZ = Math.max(0, Math.min(state.targetScrollZ, state.maxScroll));
     }
 
-    // Mouse / trackpad wheel
     window.addEventListener('wheel', (e) => {
         // e.deltaY is usually positive for scrolling down/pulling towards user -> "Moving Forward"
         // Let's say scroll down = move forward into tunnel
         applyScrollDelta(e.deltaY * wheelSpeed);
     }, { passive: true });
 
-    // Touch swipe (vertical)
     window.addEventListener('touchstart', (e) => {
-        if (e.touches.length !== 1) return; // Ignore multi-touch gestures
-        touchStartY = e.touches[0].clientY;
+        if (e.touches.length === 0) return;
+        lastTouchY = e.touches[0].clientY;
     }, { passive: true });
 
     window.addEventListener('touchmove', (e) => {
-        if (touchStartY === null) return;
+        if (lastTouchY === null || e.touches.length === 0) return;
         const currentY = e.touches[0].clientY;
-        const deltaY = touchStartY - currentY; // swipe up -> move forward
-
-        // Small deadzone to avoid accidental jitter
-        if (Math.abs(deltaY) > 1) {
-            applyScrollDelta(deltaY * touchSpeed);
-            touchStartY = currentY;
-            e.preventDefault(); // Prevent native page scroll/bounce
-        }
+        const deltaY = (lastTouchY - currentY) * touchMultiplier;
+        lastTouchY = currentY;
+        applyScrollDelta(deltaY);
+        e.preventDefault(); // Keep control similar to wheel to avoid native scroll
     }, { passive: false });
 
-    const resetTouch = () => { touchStartY = null; };
-    window.addEventListener('touchend', resetTouch, { passive: true });
-    window.addEventListener('touchcancel', resetTouch, { passive: true });
+    window.addEventListener('touchend', () => {
+        lastTouchY = null;
+    }, { passive: true });
 
     function animate() {
         // Smooth Scroll (Lerp)
