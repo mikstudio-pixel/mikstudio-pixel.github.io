@@ -88,7 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const img = document.createElement('div');
             img.style.width = '100px';
             img.style.height = '100px';
-            img.style.backgroundColor = proj.color;
+            // All project circles share the main accent color
+            img.style.backgroundColor = 'var(--main-color)';
             img.style.marginBottom = '20px';
             img.style.borderRadius = '50%'; // Just a shape
             
