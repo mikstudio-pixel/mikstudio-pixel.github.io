@@ -92,11 +92,41 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastTouchY = null;
     const touchMultiplier = 2; // Slightly higher to compensate for shorter swipe travel
 
+    function getContentHeight() {
+        // Measure actual content height from floor-content
+        // This is the source of truth for how much content we have
+        if (floorContent) {
+            return floorContent.scrollHeight;
+        }
+        return 5000; // Fallback
+    }
+
+    // Store initial content height to use as fixed reference
+    let baseContentHeight = null;
+    
     function clampTargetScroll() {
-        const maxScroll = (contentItems.length * 800) + (2 * state.roomDepth + state.roomHeight);
+        // Calculate maxScroll based on actual content height
+        // The content flows: floor -> back wall -> ceiling
+        // We need to scroll through all content regardless of zoom level
+        
+        // Cache the content height on first call to avoid zoom dependency
+        if (baseContentHeight === null) {
+            baseContentHeight = getContentHeight();
+        }
+        
+        // MaxScroll = content height + extra buffer to see the last items fully
+        // Use a fixed multiplier instead of roomDepth to ensure consistent scrolling
+        // The 2x multiplier accounts for the content appearing on floor, back wall, and ceiling
+        const maxScroll = baseContentHeight * 2 + state.roomHeight * 2;
+        
         if (targetScroll < 0) targetScroll = 0;
         if (targetScroll > maxScroll) targetScroll = maxScroll;
     }
+    
+    // Recalculate base content height on window resize
+    window.addEventListener('resize', () => {
+        baseContentHeight = null; // Reset to recalculate
+    });
     
     function applyScrollDelta(deltaY) {
         targetScroll += deltaY;
@@ -217,6 +247,15 @@ document.addEventListener('DOMContentLoaded', () => {
             : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
 
+    // Check if wireframe is visible
+    const wireframeOverlay = document.querySelector('.wireframe-overlay');
+    const isWireframeVisible = wireframeOverlay && 
+        window.getComputedStyle(wireframeOverlay).display !== 'none';
+    
+    // Throttle wireframe updates
+    let frameCount = 0;
+    const wireframeUpdateInterval = 2;
+
     // Animation Loop
     function animate() {
         // Smooth scroll
@@ -224,10 +263,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Math.abs(diff) > 0.5) {
             state.scrollPos += diff * 0.1;
             updateContentPositions();
+            
+            // Update wireframe less frequently and only if visible
+            frameCount++;
+            if (isWireframeVisible && frameCount >= wireframeUpdateInterval) {
+                updateWireframe();
+                frameCount = 0;
+            }
         }
-        
-        // Always update wireframe to match CSS transforms/transitions
-        updateWireframe();
         
         requestAnimationFrame(animate);
     }

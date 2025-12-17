@@ -139,7 +139,10 @@ body {
     background: transparent !important;
     background-color: transparent !important;
     pointer-events: none;
-    /* Removed z-index: 5 to prevent stacking context issues */
+    /* GPU Acceleration */
+    will-change: transform;
+    backface-visibility: hidden;
+    contain: layout style;
 }
 
 input[type=range] {
@@ -165,6 +168,8 @@ input[type=range] {
     transform-style: preserve-3d;
     transform: translateZ(calc(var(--room-depth) / -2));
     /* Transition removed to prevent sync issues with JS scroll/depth updates */
+    /* GPU Acceleration */
+    will-change: transform;
 }
 
 .wall {
@@ -333,6 +338,9 @@ input[type=range] {
     gap: 15vh; /* Reduced gap for numbers to be closer */
     padding-top: 10vh;
     padding-bottom: 10vh;
+    /* GPU optimization */
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 /* Content Items in Zones */
@@ -509,21 +517,25 @@ body.dark-mode .partition {
 .gallery-card {
     position: absolute;
     /* Default centering is removed here, handled by classes */
-    width: 400px;
-    height: 300px;
+    width: 320px;
+    height: 450px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid var(--main-color);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 20px;
     text-align: center;
     pointer-events: auto;
-    backface-visibility: visible;
+    backface-visibility: hidden; /* GPU optimization */
     text-decoration: none; /* Remove underline from anchor */
     transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
     transform-style: preserve-3d; /* Key for preserving 3d context */
+    overflow: hidden;
+    /* GPU Acceleration hints */
+    will-change: transform;
+    contain: layout style paint;
 }
 
 /* Positioning Classes */
@@ -560,32 +572,47 @@ body.dark-mode .partition {
 /* Hover Effects */
 .gallery-card:hover {
     border-color: #fff;
-    background: rgba(255, 51, 51, 0.2);
+    background: rgba(255, 51, 51, 0.15);
     cursor: pointer;
     /* Hover scale logic moved to specific modifiers below */
 }
 
+.gallery-card:hover img,
+.gallery-card:hover .gallery-card-image {
+    opacity: 1;
+}
+
 /* Scale on hover must respect the initial transform */
 .gallery-card.pos-center:hover {
-    transform: translate(-50%, -50%) scale(1.05);
+    transform: translate(-50%, -50%) scale(1.03);
 }
 
 .gallery-card:not(.pos-center):hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
-.gallery-card img {
-    max-width: 100%;
-    max-height: 200px;
-    margin-bottom: 20px;
-    opacity: 0.8;
+.gallery-card img,
+.gallery-card-image {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    opacity: 0.9;
+    border: 1px solid var(--main-color);
+    /* GPU optimization for images */
+    will-change: opacity;
+    backface-visibility: hidden;
+    image-rendering: optimizeSpeed;
 }
 
 .gallery-card h2 {
     color: var(--main-color);
-    font-size: 24px;
+    font-size: 16px;
+    font-weight: bold;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
     margin: 0;
+    line-height: 1.3;
 }
 
 /* Override partition behavior for gallery */
@@ -650,4 +677,105 @@ body.bw-mode.dark-mode .gallery-card {
 
 body.bw-mode .gallery-card img {
     background-color: var(--main-color) !important;
+}
+
+/* ============================================
+   HOME PAGE - PROJECT CARDS
+   ============================================ */
+
+.home-projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0;
+}
+
+.project-card {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh 10vw;
+    gap: 4vh;
+    border-bottom: 1px solid var(--main-color);
+    /* GPU optimization */
+    contain: layout style paint;
+    will-change: transform;
+}
+
+.project-card:last-child {
+    border-bottom: none;
+}
+
+.project-card img {
+    max-width: 70%;
+    max-height: 50vh;
+    object-fit: contain;
+    border: 1px solid var(--main-color);
+    /* GPU optimization */
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.project-info {
+    text-align: center;
+    max-width: 800px;
+}
+
+.project-info h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    color: var(--main-color);
+}
+
+.project-authors {
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--main-color);
+    opacity: 0.9;
+}
+
+.project-school {
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    font-style: italic;
+    margin-bottom: 2rem;
+    color: var(--main-color);
+    opacity: 0.7;
+}
+
+.project-desc {
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+    line-height: 1.6;
+    color: var(--main-color);
+    opacity: 0.85;
+}
+
+/* Dark mode adjustments for project cards */
+body.dark-mode .project-card img {
+    border-color: var(--main-color);
+    box-shadow: 0 0 30px rgba(255, 51, 51, 0.15);
+}
+
+body.dark-mode .project-info h2 {
+    text-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+}
+
+/* B/W mode adjustments */
+body.bw-mode .project-card img {
+    border-color: var(--main-color);
+}
+
+body.bw-mode .project-info h2,
+body.bw-mode .project-authors,
+body.bw-mode .project-school,
+body.bw-mode .project-desc {
+    text-shadow: none;
 }

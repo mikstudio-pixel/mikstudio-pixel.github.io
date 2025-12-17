@@ -6,13 +6,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const spacing = 800; // Distance between projects
     const startOffset = 500; // Initial offset from camera
     
-    // Placeholder Data
+    // Real Project Data
     const projects = [
-        { title: "Project Alpha", color: "#ff3333", position: "pos-tl", url: "#" },
-        { title: "Project Beta", color: "#33ff33", position: "pos-tr", url: "#" },
-        { title: "Project Gamma", color: "#3333ff", position: "pos-center", url: "#" },
-        { title: "Project Delta", color: "#ffff33", position: "pos-br", url: "#" },
-        { title: "Project Epsilon", color: "#33ffff", position: "pos-bl", url: "#" }
+        { 
+            title: "ThisChairDoesNotExist", 
+            image: "assets/ThisChairDoesNotExist.jpg",
+            position: "pos-center", 
+            url: "home.html" 
+        },
+        { 
+            title: "From End to End", 
+            image: "assets/From End to End .jpg",
+            position: "pos-tl", 
+            url: "home.html" 
+        },
+        { 
+            title: "VISTA", 
+            image: "assets/VISTA.jpg",
+            position: "pos-tr", 
+            url: "home.html" 
+        },
+        { 
+            title: "Stools Shuttlecock", 
+            image: "assets/Stools Shuttlecock.jpg",
+            position: "pos-bl", 
+            url: "home.html" 
+        },
+        { 
+            title: "Light and Darkness", 
+            image: "assets/Light and Darkness.jpg",
+            position: "pos-br", 
+            url: "home.html" 
+        },
+        { 
+            title: "Bamboo Whispers", 
+            image: "assets/BambooWhispers.png",
+            position: "pos-center", 
+            url: "home.html" 
+        },
+        { 
+            title: "DepoRooms", 
+            image: "assets/DepoRooms.jpg",
+            position: "pos-tl", 
+            url: "home.html" 
+        }
     ];
 
     // State
@@ -84,14 +121,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             card.classList.add(positionClass);
             
-            // Image Placeholder (using a colored div or the asset provided)
-            const img = document.createElement('div');
-            img.style.width = '100px';
-            img.style.height = '100px';
-            // All project circles share the main accent color
-            img.style.backgroundColor = 'var(--main-color)';
-            img.style.marginBottom = '20px';
-            img.style.borderRadius = '50%'; // Just a shape
+            // Project Image with lazy loading
+            const img = document.createElement('img');
+            img.src = proj.image;
+            img.alt = proj.title;
+            img.classList.add('gallery-card-image');
+            img.loading = 'lazy'; // Native lazy loading
+            img.decoding = 'async'; // Non-blocking decode
             
             const title = document.createElement('h2');
             title.textContent = proj.title;
@@ -141,26 +177,47 @@ document.addEventListener('DOMContentLoaded', () => {
         lastTouchY = null;
     }, { passive: true });
 
+    // Throttle wireframe updates for better performance
+    let frameCount = 0;
+    const wireframeUpdateInterval = 3; // Update wireframe every N frames
+    
     function animate() {
         // Smooth Scroll (Lerp)
-        state.scrollZ += (state.targetScrollZ - state.scrollZ) * 0.1;
+        const diff = state.targetScrollZ - state.scrollZ;
         
-        // Apply Transform
-        // We move the room TOWARDS the camera to simulate moving forward
-        // Initial room Z is -depth/2. We Add scrollZ.
-        const baseZ = state.roomDepth / -2;
-        const finalZ = baseZ + state.scrollZ;
-        
-        room.style.transform = `translateZ(${finalZ}px)`;
-        
-        // Update Wireframe
-        updateWireframe();
+        // Only update if there's meaningful change
+        if (Math.abs(diff) > 0.01) {
+            state.scrollZ += diff * 0.1;
+            
+            // Apply Transform
+            // We move the room TOWARDS the camera to simulate moving forward
+            // Initial room Z is -depth/2. We Add scrollZ.
+            const baseZ = state.roomDepth / -2;
+            const finalZ = baseZ + state.scrollZ;
+            
+            room.style.transform = `translateZ(${finalZ}px)`;
+            
+            // Update Wireframe less frequently for performance
+            frameCount++;
+            if (frameCount >= wireframeUpdateInterval) {
+                updateWireframe();
+                frameCount = 0;
+            }
+        }
         
         requestAnimationFrame(animate);
     }
 
-    // Wireframe Logic (Copied/Adapted)
+    // Check if wireframe is visible (CSS may hide it)
+    const wireframeOverlay = document.querySelector('.wireframe-overlay');
+    const isWireframeVisible = wireframeOverlay && 
+        window.getComputedStyle(wireframeOverlay).display !== 'none';
+
+    // Wireframe Logic (Copied/Adapted) - only run if visible
     function updateWireframe() {
+        // Skip expensive calculations if wireframe is hidden
+        if (!isWireframeVisible) return;
+        
         const tl = markers.tl.getBoundingClientRect();
         const tr = markers.tr.getBoundingClientRect();
         const bl = markers.bl.getBoundingClientRect();
