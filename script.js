@@ -87,20 +87,45 @@ document.addEventListener('DOMContentLoaded', () => {
         updateContentPositions(); // Immediate update on resize
     });
 
-    // Custom Scroll Logic
+    // Custom Scroll Logic (mouse wheel + touch swipe)
     let targetScroll = 0;
+    let lastTouchY = null;
+    const touchMultiplier = 2; // Slightly higher to compensate for shorter swipe travel
+
+    function clampTargetScroll() {
+        const maxScroll = (contentItems.length * 800) + (2 * state.roomDepth + state.roomHeight);
+        if (targetScroll < 0) targetScroll = 0;
+        if (targetScroll > maxScroll) targetScroll = maxScroll;
+    }
+    
+    function applyScrollDelta(deltaY) {
+        targetScroll += deltaY;
+        clampTargetScroll();
+    }
     
     window.addEventListener('wheel', (e) => {
         e.preventDefault(); // Prevent default to control the experience fully
-        
-        targetScroll += e.deltaY;
-        
-        if (targetScroll < 0) targetScroll = 0;
-        // Allow infinite scroll or clamp? Let's clamp to last item exiting
-        const maxScroll = (contentItems.length * 800) + (2 * state.roomDepth + state.roomHeight);
-        if (targetScroll > maxScroll) targetScroll = maxScroll;
-        
+        applyScrollDelta(e.deltaY);
     }, { passive: false });
+
+    // Touch support for mobile (vertical swipe behaves like scroll)
+    window.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 0) return;
+        lastTouchY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+        if (lastTouchY === null || e.touches.length === 0) return;
+        const currentY = e.touches[0].clientY;
+        const deltaY = (lastTouchY - currentY) * touchMultiplier;
+        lastTouchY = currentY;
+        applyScrollDelta(deltaY);
+        e.preventDefault(); // Keep control consistent with wheel handling
+    }, { passive: false });
+
+    window.addEventListener('touchend', () => {
+        lastTouchY = null;
+    }, { passive: true });
 
     // Intro Animation Function
     function performIntroAnimation() {
@@ -338,9 +363,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Back wall content starts after floor content ends
             backContent.style.transform = `translateY(${-state.scrollPos + fixedDepth}px)`;
             
-            // Ceiling content starts after back wall - FIXED to match floor for symmetry in Practice mode
-            // Was: ceilingContent.style.transform = `translateY(${-state.scrollPos + fixedDepth + state.roomHeight}px)`;
-            ceilingContent.style.transform = `translateY(${-state.scrollPos}px)`;
+            // Ceiling content starts after back wall
+            ceilingContent.style.transform = `translateY(${-state.scrollPos + fixedDepth + state.roomHeight}px)`;
             return;
         }
         
