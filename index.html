@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkLife | Stavba discgolfových a multigolfových hřišť</title>
+    <meta name="description" content="Navrhujeme a realizujeme profesionální discgolfová a multigolfová hřiště na klíč. Dlouholeté zkušenosti, perfektní kvalita.">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#4A4F42">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-main">
+            <div class="container">
+                <a href="#" class="logo">
+                    <img src="assets/logo.svg" alt="ParkLife" class="logo-img">
+                </a>
+                <nav class="nav-main">
+                    <ul class="nav-list">
+                        <li><a href="#o-nas">o nás</a></li>
+                        <li><a href="#co-nabizime">co nabízíme</a></li>
+                        <li><a href="#realizace">realizace</a></li>
+                        <li><a href="#ke-stazeni">ke stažení</a></li>
+                    </ul>
+                </nav>
+                <a href="#kontakt" class="btn btn-primary" data-text="napište nám"><span>napište nám</span></a>
+                <button class="mobile-menu-toggle" aria-label="Otevřít menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Navigation -->
+    <div class="secondary-nav">
+        <div class="container">
+            <nav class="nav-secondary">
+                <ul class="nav-list">
+                    <li><a href="#discgolf" class="active" data-hero-image="assets/Picture Frame.png">discgolf</a></li>
+                    <li><a href="#multigolf" data-hero-image="assets/Picture Frame.png">multigolf</a></li>
+                    <li><a href="#minigolf" data-hero-image="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1600&h=600&fit=crop">minigolf</a></li>
+                    <li><a href="#dalsi" data-hero-image="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=1600&h=600&fit=crop">další</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="#o-nas">O nás</a></li>
+                <li><a href="#co-nabizime">Co nabízíme</a></li>
+                <li><a href="#realizace">Realizace</a></li>
+                <li><a href="#ke-stazeni">Ke stažení</a></li>
+            </ul>
+            <div class="mobile-nav-secondary">
+                <a href="#discgolf">Discgolf</a>
+                <a href="#multigolf">Multigolf</a>
+                <a href="#minigolf">Minigolf</a>
+                <a href="#dalsi">Další služby</a>
+            </div>
+            <a href="#kontakt" class="btn btn-primary" data-text="Napište nám"><span>Napište nám</span></a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="o-nas">
+        <div class="hero-image-wrapper">
+            <div class="hero-media">
+                <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+                    <source src="https://video.wixstatic.com/video/a1f23a_77af8f77d1c343b6bbf5d06dc275c741/1080p/mp4/file.mp4" type="video/mp4">
+                </video>
+                <img class="hero-hover-image" src="" alt="Discgolf hřiště ParkLife" loading="eager">
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <h1>Dlouholeté zkušenosti,<br>perfektní kvalita</h1>
+                <p class="hero-perex">Navrhujeme a stavíme discgolfová i multigolfová hřiště na klíč – od prvního návrhu až po finální certifikaci. Stavíme na zkušenostech z desítek realizací a důrazu na detail, který je ve hře znát.</p>
+                <a href="#co-nabizime" class="btn btn-secondary" data-text="zjistit víc"><span>zjistit víc</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reference Section -->
+    <section class="reference" id="realizace">
+        <div class="container">
+            <div class="reference-carousel">
+                <div class="reference-track">
+                    <article class="reference-card">
+                        <div class="reference-image">
+                            <img src="assets/Rectangle.png" alt="Discgolf Mariánské lázně" loading="lazy">
+                        </div>
+                        <div class="reference-info">
+                            <span class="reference-tag">discgolf</span>
+                            <h3>Mariánské lázně</h3>
+                        </div>
+                    </article>
+                    <article class="reference-card">
+                        <div class="reference-image">
+                            <img src="assets/Rectangle2.png" alt="Multigolf Sokolov" loading="lazy">
+                        </div>
+                        <div class="reference-info">
+                            <span class="reference-tag tag-multigolf">multigolf</span>
+                            <h3>Sokolov</h3>
+                        </div>
+                    </article>
+                    <article class="reference-card">
+                        <div class="reference-image">
+                            <img src="assets/Rectangle3.png" alt="Discgolf Lovosice" loading="lazy">
+                        </div>
+                        <div class="reference-info">
+                            <span class="reference-tag">discgolf</span>
+                            <h3>Lovosice</h3>
+                        </div>
+                    </article>
+                </div>
+                <button class="carousel-btn carousel-next" aria-label="Další">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="reference-cta">
+                <a href="#" class="btn btn-outline" data-text="více projektů"><span>více projektů</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark Content Area -->
+    <div class="dark-section">
+        <!-- Vybavení hřišť -->
+        <section class="equipment" id="co-nabizime">
+            <div class="container">
+                <h2 class="section-title">Vybavení hřišť</h2>
+                <div class="equipment-grid">
+                    <div class="equipment-image">
+                        <img src="assets/Rectangle4.png" alt="Navigační systém ParkLife" loading="lazy">
+                    </div>
+                    <div class="equipment-content">
+                        <p>Kompletní navigační systém je základ přehledného hřiště. Navrhujeme cedule, mapy a značení tak, aby hráče vedly intuitivně a byly čitelné v každém prostředí.</p>
+                        <p>Zajistíme také koše, odpaliště, terénní úpravy a mobiliář. Vše v jednotném vizuálním stylu, s odolnými materiály a jasnou orientací pro hráče.</p>
+                        <a href="#" class="btn btn-outline-light" data-text="více projektů"><span>více projektů</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design a mapy - text vlevo -->
+        <section class="design-text">
+            <div class="container">
+                <div class="design-text-grid">
+                    <div class="design-text-content">
+                        <p>Design hřiště vzniká s ohledem na terén, bezpečnost a herní zážitek. Připravíme trasování jamek i vizuální identitu, která podtrhne charakter místa.</p>
+                        <p>Detailní mapy usnadní orientaci a pomohou hráčům zlepšovat hru. Dodáváme je ve formátu pro tisk i digitální použití.</p>
+                    </div>
+                    <div class="design-text-image">
+                        <img src="assets/Free_Billboard_Mockup_2.png" alt="Mapa discgolfového hřiště" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brožura Section -->
+        <section class="brochure" id="ke-stazeni">
+            <div class="container">
+                <div class="brochure-grid">
+                    <div class="brochure-content">
+                        <h2>Stáhněte<br>si naši brožuru</h2>
+                        <p>V brožuře najdete přehled služeb, reference a ukázky realizací. Pokud plánujete nové hřiště nebo obnovu stávajícího, rádi s vámi projdeme možnosti a doporučíme vhodné řešení.</p>
+                    </div>
+                    <div class="brochure-image">
+                        <img src="assets/Rectangle5.png" alt="ParkLife brožura" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="kontakt">
+        <div class="footer-arrow">
+            <img src="assets/Poly Line.svg" alt="" class="footer-arrow-svg">
+        </div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>odkaz</h4>
+                    <ul>
+                        <li><a href="#">odkaz</a></li>
+                        <li><a href="#">nějaký odkaz</a></li>
+                        <li><a href="#">nějaký další odkaz</a></li>
+                        <li><a href="#">na tenhle odkaz nechceš klikat</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>o nás</h4>
+                    <ul>
+                        <li><a href="#">odkaz</a></li>
+                        <li><a href="#">nějaký odkaz</a></li>
+                        <li><a href="#">nějaký další odkaz</a></li>
+                        <li><a href="#">na tenhle odkaz nechceš klikat</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
