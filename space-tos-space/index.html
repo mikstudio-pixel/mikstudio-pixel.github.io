@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space-to-Space</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="animation-page">
+
+    <div class="overlay-ui">
+        
+        <nav class="side-nav left">
+            <a href="index.html" class="active">animation</a>
+            <a href="home.html">home</a>
+            <a href="contact.html">video</a>
+            <a href="gallery.html">gallery</a>
+        </nav>
+        
+        <nav class="side-nav right">
+            <a href="practice.html">stretch</a>
+            <a href="architecture.html">depth</a>
+            <a href="research.html">crazy numbers</a>
+            <a href="index.html">default</a>
+        </nav>
+
+        <div class="controls">
+            <div class="control-row">
+                <label for="darkModeToggle">Dark Mode</label>
+                <button id="darkModeToggle" class="toggle-btn">○</button>
+            </div>
+            <div class="control-row">
+                <label for="colorModeToggle">B/W Mode</label>
+                <button id="colorModeToggle" class="toggle-btn">○</button>
+            </div>
+            <label for="depthSlider">Room Depth</label>
+            <input type="range" id="depthSlider" min="500" max="3000" value="1000">
+        </div>
+    </div>
+
+    <div class="scene">
+        <!-- SVG Wireframe Layer -->
+        <svg id="wireframe" class="wireframe-overlay">
+            <line class="depth-line tl"></line>
+            <line class="depth-line tr"></line>
+            <line class="depth-line bl"></line>
+            <line class="depth-line br"></line>
+            <polygon class="back-rect"></polygon>
+        </svg>
+
+        <div class="room">
+            <div class="wall ceiling"></div>
+            <div class="wall floor"></div>
+            <div class="wall left-wall"></div>
+            <div class="wall right-wall"></div>
+            <div class="wall back-wall">
+                <!-- Invisible markers for tracking corners -->
+                <div class="marker tl"></div>
+                <div class="marker tr"></div>
+                <div class="marker bl"></div>
+                <div class="marker br"></div>
+                
+                <!-- Back Wall Content Zone -->
+                <div class="zone-content back-content">
+                    <div class="content-item practice-text">SPACE</div>
+                    <div class="content-item practice-text">SPACE</div>
+                    <div class="content-item debug-num">1</div>
+                    <div class="content-item debug-num">2</div>
+                    <div class="content-item debug-num">3</div>
+                </div>
+            </div>
+            
+            <!-- Floor Content Zone (Placed inside room context) -->
+            <div class="zone-wrapper floor-wrapper">
+                <div class="zone-content floor-content">
+                    <div class="content-item practice-text">SPACE</div>
+                    <div class="content-item practice-text">SPACE</div>
+                    <div class="content-item debug-num">1</div>
+                    <div class="content-item debug-num">2</div>
+                    <div class="content-item debug-num">3</div>
+                </div>
+            </div>
+
+            <!-- Ceiling Content Zone -->
+            <div class="zone-wrapper ceiling-wrapper">
+                <div class="zone-content ceiling-content">
+                    <div class="content-item practice-text">SPACE</div>
+                    <div class="content-item practice-text">SPACE</div>
+                    <div class="content-item debug-num">1</div>
+                    <div class="content-item debug-num">2</div>
+                    <div class="content-item debug-num">3</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="theme-toggle.js"></script>
+</body>
+</html>
