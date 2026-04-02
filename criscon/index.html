@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrisCon – Konference krizového řízení</title>
+  <meta name="description" content="CrisCon propojuje odborníky z praxe, akademické sféry i výzkumu, kteří řeší krizové situace a hledají způsoby, jak jim předcházet.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="global-canvas"></canvas>
+  <div class="page">
+
+    <!-- ── Header ──────────────────────────────────────────── -->
+    <header class="site-header">
+      <a href="#" class="logo"><img src="assets/logo/criscon_CMYK.svg" alt="CrisCon"></a>
+      <nav class="site-nav">
+        <a href="#program" class="nav-link">Program</a>
+        <a href="#full-program" class="nav-link">Harmonogram</a>
+        <a href="#registration" class="btn-register">Registrace</a>
+      </nav>
+    </header>
+
+    <!-- ── Hero (dark → snakes) ────────────────────────────── -->
+    <section class="hero dark-zone">
+      <canvas class="zone-canvas"></canvas>
+      <div class="hero-content">
+        <h1>Konference krizového řízení<br>a řešení krizových situací</h1>
+        <p class="hero-date">17. a 18. září 2026</p>
+        <p class="hero-lead">CrisCon není jen konference. Je to místo, kde se potkávají lidé, kteří řeší krizové situace v reálném světě, a ti, kteří hledají způsoby, jak jim předcházet.</p>
+      </div>
+      <a href="#registration" class="hero-ticket">
+        <span class="hero-ticket-heading">Vstup zdarma</span>
+        <span class="hero-ticket-meta">17.–18. září 2026 · Zlín</span>
+        <span class="hero-ticket-cta">Zajistěte si místo →</span>
+        <span class="hero-ticket-tear"></span>
+      </a>
+    </section>
+
+    <!-- ── Program (light → cursor trail) ──────────────────── -->
+    <section id="program" class="program light-zone">
+      <div class="program-content">
+        <div class="program-intro">
+          <h2>Dva dny plné<br>know-how a praxe</h2>
+          <p>CrisCon propojuje témata krizového řízení, bezpečnosti, zdravotnictví, logistiky, resilience a moderních technologií do programu, který nabízí inspiraci, sdílení zkušeností i konkrétní příklady z reálného světa.</p>
+        </div>
+
+        <div class="program-day">
+          <div class="day-label"><span>1.</span> den</div>
+          <div class="speaker">
+            <div class="speaker-header">
+              <span class="speaker-dot"></span>
+              <span class="speaker-name">prof. Ing. Michaela Bartoňová, Ph.D.</span>
+            </div>
+            <p class="speaker-desc">nemocniční krizová připravenost<br>a provoz zdravotnické infrastruktury.</p>
+          </div>
+          <div class="speaker">
+            <div class="speaker-header">
+              <span class="speaker-dot"></span>
+              <span class="speaker-name">prof. Ing. Michaela Bartoňová, Ph.D.</span>
+            </div>
+            <p class="speaker-desc">nemocniční krizová připravenost<br>a provoz zdravotnické infrastruktury.</p>
+          </div>
+          <div class="speaker">
+            <div class="speaker-header">
+              <span class="speaker-dot"></span>
+              <span class="speaker-name">prof. Ing. Michaela Bartoňová, Ph.D.</span>
+            </div>
+            <p class="speaker-desc">nemocniční krizová připravenost<br>a provoz zdravotnické infrastruktury.</p>
+          </div>
+          <div class="speaker">
+            <div class="speaker-header">
+              <span class="speaker-dot"></span>
+              <span class="speaker-name">prof. Ing. Michaela Bartoňová, Ph.D.</span>
+            </div>
+            <p class="speaker-desc">nemocniční krizová připravenost<br>a provoz zdravotnické infrastruktury.</p>
+          </div>
+        </div>
+
+        <div class="program-day">
+          <div class="day-label"><span>2.</span> den</div>
+          <div class="speaker">
+            <div class="speaker-header">
+              <span class="speaker-dot"></span>
+              <span class="speaker-name">prof. Ing. Michaela Bartoňová, Ph.D.</span>
+            </div>
+            <p class="speaker-desc">nemocniční krizová připravenost<br>a provoz zdravotnické infrastruktury.</p>
+          </div>
+          <div class="speaker">
+            <div class="speaker-header">
+              <span class="speaker-dot"></span>
+              <span class="speaker-name">prof. Ing. Michaela Bartoňová, Ph.D.</span>
+            </div>
+            <p class="speaker-desc">nemocniční krizová připravenost<br>a provoz zdravotnické infrastruktury.</p>
+          </div>
+          <div class="speaker">
+            <div class="speaker-header">
+              <span class="speaker-dot"></span>
+              <span class="speaker-name">prof. Ing. Michaela Bartoňová, Ph.D.</span>
+            </div>
+            <p class="speaker-desc">nemocniční krizová připravenost<br>a provoz zdravotnické infrastruktury.</p>
+          </div>
+          <div class="speaker">
+            <div class="speaker-header">
+              <span class="speaker-dot"></span>
+              <span class="speaker-name">prof. Ing. Michaela Bartoňová, Ph.D.</span>
+            </div>
+            <p class="speaker-desc">nemocniční krizová připravenost<br>a provoz zdravotnické infrastruktury.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="conference-overview light-zone">
+      <div class="conference-overview-content">
+        <div class="conference-overview-intro">
+          <p class="section-label">O konferenci</p>
+          <h2>CrisCon propojuje praxi, akademii i výzkum</h2>
+          <p>Na jednom místě se setkávají experti na bezpečnost, záchranáři, krizoví manažeři i výzkumníci. CrisCon je platforma pro lidi, kteří chtějí být připraveni lépe reagovat na současné hrozby a společně hledat funkční řešení.</p>
+        </div>
+
+        <div class="conference-stats" aria-label="Hlavní čísla konference">
+          <article class="conference-stat">
+            <strong>150+</strong>
+            <span>účastníků každý rok</span>
+          </article>
+          <article class="conference-stat">
+            <strong>15</strong>
+            <span>špičkových přednášejících</span>
+          </article>
+          <article class="conference-stat">
+            <strong>desítky</strong>
+            <span>institucí z akademické sféry i praxe</span>
+          </article>
+        </div>
+
+        <div class="conference-overview-grid">
+          <article class="overview-panel">
+            <h3>Během dvou intenzivních dnů</h3>
+            <ul>
+              <li>inspirativní přednášky od odborníků z praxe</li>
+              <li>skutečné příběhy krizí a jejich řešení</li>
+              <li>otevřené diskuze o aktuálních hrozbách</li>
+              <li>prostor pro nové kontakty a spolupráci</li>
+            </ul>
+          </article>
+
+          <article class="overview-panel">
+            <h3>Nejaktuálnější výzvy dnešní doby</h3>
+            <ul>
+              <li>krizové řízení a ochrana obyvatelstva</li>
+              <li>analýza a řízení rizik</li>
+              <li>kritická infrastruktura a kybernetická bezpečnost</li>
+              <li>environmentální, technologické a zdravotnické hrozby</li>
+              <li>digitalizace a budoucnost bezpečnosti</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="conference-overview-closing">Každý ročník reaguje na to, co se právě děje ve světě, a přináší témata, která jsou pro připravenost institucí i jednotlivců opravdu podstatná.</p>
+      </div>
+    </section>
+
+    <!-- ── Bottom (dark → snakes + gallery) ──────────────────── -->
+    <section class="bottom dark-zone">
+      <canvas class="zone-canvas"></canvas>
+      <div class="gallery-track">
+        <div class="gallery-strip">
+          <img src="assets/img-webp/JS1_5356.webp" alt="">
+          <img src="assets/img-webp/JS1_5391.webp" alt="">
+          <img src="assets/img-webp/JS1_5421.webp" alt="">
+          <img src="assets/img-webp/JS1_5460.webp" alt="">
+          <img src="assets/img-webp/JS1_5497.webp" alt="">
+          <img src="assets/img-webp/JS1_5533.webp" alt="">
+          <img src="assets/img-webp/JS1_5572.webp" alt="">
+          <img src="assets/img-webp/JS1_5613.webp" alt="">
+          <img src="assets/img-webp/JS1_5656.webp" alt="">
+          <img src="assets/img-webp/JS1_5706.webp" alt="">
+          <img src="assets/img-webp/JS1_5757.webp" alt="">
+          <img src="assets/img-webp/JS1_5813.webp" alt="">
+          <img src="assets/img-webp/JS1_5876.webp" alt="">
+          <img src="assets/img-webp/JS1_5952.webp" alt="">
+          <img src="assets/img-webp/JS1_6034.webp" alt="">
+        </div>
+        <div class="gallery-strip" aria-hidden="true">
+          <img src="assets/img-webp/JS1_5356.webp" alt="">
+          <img src="assets/img-webp/JS1_5391.webp" alt="">
+          <img src="assets/img-webp/JS1_5421.webp" alt="">
+          <img src="assets/img-webp/JS1_5460.webp" alt="">
+          <img src="assets/img-webp/JS1_5497.webp" alt="">
+          <img src="assets/img-webp/JS1_5533.webp" alt="">
+          <img src="assets/img-webp/JS1_5572.webp" alt="">
+          <img src="assets/img-webp/JS1_5613.webp" alt="">
+          <img src="assets/img-webp/JS1_5656.webp" alt="">
+          <img src="assets/img-webp/JS1_5706.webp" alt="">
+          <img src="assets/img-webp/JS1_5757.webp" alt="">
+          <img src="assets/img-webp/JS1_5813.webp" alt="">
+          <img src="assets/img-webp/JS1_5876.webp" alt="">
+          <img src="assets/img-webp/JS1_5952.webp" alt="">
+          <img src="assets/img-webp/JS1_6034.webp" alt="">
+        </div>
+      </div>
+      <div class="bottom-content">
+        <h2>Připraveni<br>na cokoliv?</h2>
+        <p class="bottom-copy"><span class="bottom-copy-highlight">Protože krize si nevybírají. A připravenost není náhoda. CrisCon je místo pro ty, kteří chtějí být o krok napřed.</span></p>
+      </div>
+    </section>
+
+    <!-- ── Registration ────────────────────────────────────── -->
+    <section id="registration" class="registration light-zone">
+      <div class="registration-content">
+        <div class="info-card-stack">
+          <div class="info-card-ghost" style="opacity: 0.08;"></div>
+          <div class="info-card-ghost" style="opacity: 0.15;"></div>
+          <div class="info-card-ghost" style="opacity: 0.25;"></div>
+          <div class="info-card-ghost" style="opacity: 0.40;"></div>
+          <div class="registration-info">
+            <div class="ticket-header">
+              <h3 class="info-heading">Vaše vstupenka</h3>
+              <span class="ticket-edition">CrisCon 2026</span>
+            </div>
+            <div class="ticket-motivation" id="ticket-motivation">
+              <p>CrisCon spojuje odborníky z praxe, akademické sféry i výzkumu, kteří chtějí být o krok napřed. Počet míst je omezený, zajistěte si své včas.</p>
+            </div>
+            <div class="ticket-live-fields" id="ticket-live-fields">
+              <div class="ticket-live-row" id="ticket-row-name">
+                <span class="ticket-live-label">Jméno</span>
+                <span class="ticket-live-value" id="ticket-name"></span>
+              </div>
+              <div class="ticket-live-row" id="ticket-row-email">
+                <span class="ticket-live-label">E-mail</span>
+                <span class="ticket-live-value" id="ticket-email"></span>
+              </div>
+              <div class="ticket-live-row" id="ticket-row-org">
+                <span class="ticket-live-label">Organizace</span>
+                <span class="ticket-live-value" id="ticket-org"></span>
+              </div>
+            </div>
+            <div class="registration-details">
+              <div class="detail-item">
+                <span class="detail-label">Kdy</span>
+                <span class="detail-value">17.–18. září 2026</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Kde</span>
+                <span class="detail-value">Zlín, Kongresové centrum</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Cena</span>
+                <span class="detail-value ticket-price">Vstup zdarma</span>
+              </div>
+            </div>
+            <button type="submit" form="reg-form" class="btn-ticket">Získat vstupenku →</button>
+          </div>
+          <div class="ticket-tear"></div>
+        </div>
+        <form id="reg-form" class="registration-form" onsubmit="return false;">
+          <h2>Registrace</h2>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fname">Jméno</label>
+              <input type="text" id="fname" name="fname" required placeholder="Jan">
+            </div>
+            <div class="form-field">
+              <label for="lname">Příjmení</label>
+              <input type="text" id="lname" name="lname" required placeholder="Novák">
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required placeholder="jan.novak@firma.cz">
+          </div>
+          <div class="form-field">
+            <label for="org">Organizace</label>
+            <input type="text" id="org" name="org" placeholder="Název firmy / instituce">
+          </div>
+          <div class="form-field">
+            <label for="note">Poznámka</label>
+            <textarea id="note" name="note" rows="3" placeholder="Dietní požadavky, fakturační údaje…"></textarea>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ── Full program (dark → snakes) ─────────────────────── -->
+    <section id="full-program" class="full-program dark-zone">
+      <canvas class="zone-canvas"></canvas>
+      <div class="full-program-content">
+        <div class="fp-sticky-header">
+          <h2 class="fp-title">Kompletní harmonogram</h2>
+          <div class="fp-tabs">
+            <button class="fp-tab fp-tab--active" data-fp-day="1"><span>1.</span> den</button>
+            <button class="fp-tab" data-fp-day="2"><span>2.</span> den</button>
+          </div>
+        </div>
+
+        <div class="fp-layout">
+          <div class="fp-schedule">
+
+            <!-- Den 1 -->
+            <div class="fp-day-list fp-day-list--active" data-fp-day="1">
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">08:30–09:30</span>
+                <span class="fp-label">Registrace účastníků</span>
+              </div>
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">09:30–09:50</span>
+                <span class="fp-label">Slavnostní zahájení konference, přivítání pořadatelů a partnerů</span>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Úvodní keynote: Odolnost společnosti v době řetězených krizí" data-speaker="prof. Ing. Michaela Bartoňová, Ph.D." data-desc="Jak se mění povaha krizí v 21. století a co to znamená pro odolnost celé společnosti? Keynote otevírající konferenci zasadí témata do širšího kontextu." data-location="Hlavní sál" data-tags="resilience,krizové řízení">
+                <span class="fp-dot"></span>
+                <span class="fp-time">09:50–10:20</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Úvodní keynote: Odolnost společnosti v době řetězených krizí</span>
+                  <span class="fp-talk-speaker">prof. Ing. Michaela Bartoňová, Ph.D.</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Kritická infrastruktura zdravotnictví pod tlakem" data-speaker="MUDr. Lucie Navrátilová, MBA" data-desc="Nemocnice jako kritická infrastruktura — kapacity, zásobování, personál. Co se děje, když systém narazí na své limity." data-location="Hlavní sál" data-tags="zdravotnictví,kritická infrastruktura">
+                <span class="fp-dot"></span>
+                <span class="fp-time">10:20–10:50</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Kritická infrastruktura zdravotnictví pod tlakem</span>
+                  <span class="fp-talk-speaker">MUDr. Lucie Navrátilová, MBA</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Krizová komunikace státu, samospráv a IZS" data-speaker="Mgr. et Mgr. Jan Sedlář" data-desc="Rychle se vyvíjející události vyžadují koordinovanou komunikaci. Jak ji zvládnout na úrovni státu, kraje i jednotlivých složek." data-location="Hlavní sál" data-tags="bezpečnost,krizová komunikace">
+                <span class="fp-dot"></span>
+                <span class="fp-time">10:50–11:20</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Krizová komunikace státu, samospráv a IZS</span>
+                  <span class="fp-talk-speaker">Mgr. et Mgr. Jan Sedlář</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">11:20–11:40</span>
+                <span class="fp-label">Coffee break</span>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Bezpečnost logistických procesů při výpadku klíčových uzlů" data-speaker="Ing. Tomáš Veverka" data-desc="Zásobovací řetězce jsou křehčí, než se zdá. Přednáška mapuje slabá místa a strategie pro zachování kontinuity." data-location="Hlavní sál" data-tags="logistika,resilience">
+                <span class="fp-dot"></span>
+                <span class="fp-time">11:40–12:10</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Bezpečnost logistických procesů při výpadku klíčových uzlů</span>
+                  <span class="fp-talk-speaker">Ing. Tomáš Veverka</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Kybernetický incident jako spouštěč provozní krize" data-speaker="Ing. Petra Holubová, Ph.D." data-desc="Jeden ransomware útok dokáže paralyzovat celou organizaci. Jak vypadá kaskáda následků a jak jí předejít." data-location="Hlavní sál" data-tags="kyberbezpečnost,technologie">
+                <span class="fp-dot"></span>
+                <span class="fp-time">12:10–12:40</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Kybernetický incident jako spouštěč provozní krize</span>
+                  <span class="fp-talk-speaker">Ing. Petra Holubová, Ph.D.</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">12:40–14:00</span>
+                <span class="fp-label">Oběd + networking</span>
+              </div>
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">13:00–15:30</span>
+                <span class="fp-label">Doprovodný program: ukázka techniky a vozidel IZS</span>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Koordinace složek při zásahu s velkým počtem zasažených osob" data-speaker="plk. Mgr. David Konečný" data-desc="Jak funguje spolupráce hasičů, záchranářů a policie při hromadném neštěstí. Reálné zkušenosti z cvičení i ostrých zásahů." data-location="Venkovní areál – u vozidel IZS" data-tags="bezpečnost,IZS,krizové řízení">
+                <span class="fp-dot"></span>
+                <span class="fp-time">14:00–14:30</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Koordinace složek při zásahu s velkým počtem zasažených</span>
+                  <span class="fp-talk-speaker">plk. Mgr. David Konečný</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Jednotná třídící karta a triage v praxi" data-speaker="Bc. Kateřina Fialová, DiS." data-desc="Triage rozhoduje o životech. Jak funguje třídění raněných v praxi a co přináší jednotná třídící karta." data-location="Venkovní areál – u sanitky" data-tags="zdravotnictví,IZS">
+                <span class="fp-dot"></span>
+                <span class="fp-time">14:30–15:00</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Jednotná třídící karta a triage v praxi</span>
+                  <span class="fp-talk-speaker">Bc. Kateřina Fialová, DiS.</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">15:00–15:20</span>
+                <span class="fp-label">Panel: Kde dnes nejčastěji selhává připravenost organizací?</span>
+              </div>
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">15:20–15:40</span>
+                <span class="fp-label">Coffee break</span>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Digitalizace krizového řízení: od dat ke správnému rozhodnutí" data-speaker="Ing. Radek Jelínek" data-desc="Data bez kontextu nepomůžou. Jak digitální nástroje proměňují rozhodování v krizovém řízení." data-location="Hlavní sál" data-tags="technologie,krizové řízení">
+                <span class="fp-dot"></span>
+                <span class="fp-time">15:40–16:10</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Digitalizace krizového řízení: od dat ke správnému rozhodnutí</span>
+                  <span class="fp-talk-speaker">Ing. Radek Jelínek</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Business continuity při energetických a provozních výpadcích" data-speaker="Ing. Marek Hlavsa, MBA" data-desc="Výpadek energie zastaví výrobu i služby. Jak nastavit plán kontinuity, který skutečně funguje." data-location="Hlavní sál" data-tags="resilience,logistika">
+                <span class="fp-dot"></span>
+                <span class="fp-time">16:10–16:40</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Business continuity při energetických výpadcích</span>
+                  <span class="fp-talk-speaker">Ing. Marek Hlavsa, MBA</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Školy pod tlakem: bezpečnostní incidenty, prevence a reakce" data-speaker="Mgr. Alena Kubíčková" data-desc="Školy čelí novým hrozbám — od útočníků po kyberšikanu. Co funguje v prevenci a jak reagovat, když k incidentu dojde." data-location="Přednášková místnost B" data-tags="bezpečnost,prevence">
+                <span class="fp-dot"></span>
+                <span class="fp-time">16:40–17:10</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Školy pod tlakem: bezpečnostní incidenty a prevence</span>
+                  <span class="fp-talk-speaker">Mgr. Alena Kubíčková</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">19:00–23:00</span>
+                <span class="fp-label">Společenský večer a neformální networking</span>
+              </div>
+            </div>
+
+            <!-- Den 2 -->
+            <div class="fp-day-list" data-fp-day="2">
+              <div class="fp-entry fp-entry--talk" data-title="Environmentální hrozby a odolnost území v podmínkách ČR" data-speaker="RNDr. Veronika Šimečková, Ph.D." data-desc="Klimatická změna přináší nové scénáře. Jak se česká krajina a města připravují na extrémní počasí a environmentální rizika." data-location="Hlavní sál" data-tags="resilience,environmentální hrozby">
+                <span class="fp-dot"></span>
+                <span class="fp-time">09:00–09:30</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Environmentální hrozby a odolnost území v podmínkách ČR</span>
+                  <span class="fp-talk-speaker">RNDr. Veronika Šimečková, Ph.D.</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Ochrana obyvatelstva při kombinovaných rizicích" data-speaker="pplk. Bc. Ondřej Marek" data-desc="Když se sejde povodeň s výpadkem elektřiny. Jak přistupovat k ochraně obyvatel při souběhu více hrozeb." data-location="Hlavní sál" data-tags="bezpečnost,krizové řízení,IZS">
+                <span class="fp-dot"></span>
+                <span class="fp-time">09:30–10:00</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Ochrana obyvatelstva při kombinovaných rizicích</span>
+                  <span class="fp-talk-speaker">pplk. Bc. Ondřej Marek</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="CBRN hrozby a připravenost institucí na nepravděpodobné scénáře" data-speaker="" data-desc="Chemické, biologické, radiologické a nukleární hrozby — jak se na ně připravit, i když se zdají vzdálené." data-location="Hlavní sál" data-tags="bezpečnost,CBRN">
+                <span class="fp-dot"></span>
+                <span class="fp-time">10:00–10:30</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">CBRN hrozby a připravenost institucí</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">10:30–10:40</span>
+                <span class="fp-label">Krátká moderovaná diskuse</span>
+              </div>
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">10:40–11:00</span>
+                <span class="fp-label">Coffee break</span>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Riziková analýza jako nástroj pro rozhodování vedení organizací" data-speaker="" data-desc="Správně provedená analýza rizik je základ. Jak ji uchopit, aby vedení organizace skutečně informovala." data-location="Přednášková místnost B" data-tags="krizové řízení,resilience">
+                <span class="fp-dot"></span>
+                <span class="fp-time">11:00–11:30</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Riziková analýza jako nástroj pro rozhodování vedení</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Kyberbezpečnost veřejných institucí: nejčastější slabá místa a prevence" data-speaker="" data-desc="Veřejné instituce jsou častým cílem útoků. Přednáška identifikuje typická slabá místa a nabízí praktická doporučení." data-location="Přednášková místnost B" data-tags="kyberbezpečnost,technologie">
+                <span class="fp-dot"></span>
+                <span class="fp-time">11:30–12:00</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Kyberbezpečnost veřejných institucí</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--talk" data-title="Praktické lessons learned z mimořádných událostí posledních let" data-speaker="" data-desc="Co nás naučily nedávné krize? Konkrétní příklady a poučení, které lze aplikovat v praxi." data-location="Hlavní sál" data-tags="krizové řízení,resilience">
+                <span class="fp-dot"></span>
+                <span class="fp-time">12:00–12:30</span>
+                <div class="fp-talk">
+                  <span class="fp-talk-title">Praktické lessons learned z mimořádných událostí</span>
+                </div>
+              </div>
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">12:30–13:00</span>
+                <span class="fp-label">Závěrečný panel: Jak zvýšit připravenost na budoucí krize?</span>
+              </div>
+              <div class="fp-entry fp-entry--meta">
+                <span class="fp-dot fp-dot--hidden"></span>
+                <span class="fp-time">13:00</span>
+                <span class="fp-label">Oběd a ukončení konference</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="fp-detail-col" id="fp-detail-col" aria-hidden="true">
+          <button type="button" class="fp-detail-backdrop" id="fp-detail-backdrop" aria-label="Zavřít detail přednášky"></button>
+          <div class="fp-detail" id="fp-detail" role="dialog" aria-modal="true" aria-labelledby="fp-detail-title">
+            <div class="fp-detail-header">
+              <h3 class="fp-detail-title" id="fp-detail-title"></h3>
+              <button type="button" class="fp-detail-close" id="fp-detail-close" aria-label="Zavřít detail">&times;</button>
+            </div>
+            <div class="fp-detail-image">
+              <img src="" alt="">
+            </div>
+            <div class="fp-detail-body">
+              <p class="fp-detail-text"></p>
+            </div>
+            <div class="fp-detail-meta">
+              <div class="fp-detail-location">
+                <span class="fp-detail-location-icon"></span>
+                <span class="fp-detail-location-text"></span>
+              </div>
+              <div class="fp-detail-tags"></div>
+            </div>
+            <div class="fp-detail-empty">
+              <p>Klikněte na přednášku<br>pro zobrazení detailu.</p>
+            </div>
+          </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Photo gallery strip ──────────────────────────────────── -->
+    <section class="photo-gallery">
+      <div class="photo-strip-track">
+        <div class="photo-strip">
+          <img src="assets/img-webp/JS1_5421.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5442.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5497.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5533.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5572.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5613.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5656.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5706.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5757.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5813.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5876.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5952.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_6034.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5391.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5460.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5356.webp" alt="" loading="lazy">
+        </div>
+        <div class="photo-strip" aria-hidden="true">
+          <img src="assets/img-webp/JS1_5421.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5442.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5497.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5533.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5572.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5613.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5656.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5706.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5757.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5813.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5876.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5952.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_6034.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5391.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5460.webp" alt="" loading="lazy">
+          <img src="assets/img-webp/JS1_5356.webp" alt="" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ────────────────────────────────────────────── -->
+    <footer class="site-footer dark-zone">
+      <canvas class="zone-canvas"></canvas>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo"><img src="assets/logo/criscon_CMYK.svg" alt="CrisCon"></a>
+          <p class="footer-tagline">Konference krizového řízení<br>a řešení krizových situací</p>
+        </div>
+        <div class="footer-columns">
+          <div class="footer-col">
+            <h4>Konference</h4>
+            <ul>
+              <li><a href="#about">O konferenci</a></li>
+              <li><a href="#program">Program</a></li>
+              <li><a href="#registration">Registrace</a></li>
+              <li><a href="#">Minulé ročníky</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Kontakt</h4>
+            <ul>
+              <li><a href="mailto:info@criscon.cz">info@criscon.cz</a></li>
+              <li><a href="tel:+420777123456">+420 777 123 456</a></li>
+              <li>Kongresové centrum Zlín</li>
+              <li>nám. T. G. Masaryka 5556, Zlín</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Pořadatel</h4>
+            <ul>
+              <li>Univerzita Tomáše Bati ve Zlíně</li>
+              <li>Fakulta logistiky a krizového řízení</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 CrisCon. Všechna práva vyhrazena.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <div class="speaker-preview" id="speaker-preview">
+    <img src="" alt="">
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
