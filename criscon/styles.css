@@ -89,6 +89,27 @@ body.fp-detail-open {
   gap: 32px;
 }
 
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-light);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
 .nav-link {
   font-size: 1rem;
   color: var(--text-light);
@@ -523,7 +544,9 @@ body.fp-detail-open {
 }
 
 .fp-layout {
-  position: relative;
+  display: flex;
+  gap: 56px;
+  align-items: flex-start;
   padding-bottom: 120px;
 }
 
@@ -658,16 +681,22 @@ body.fp-detail-open {
 /* ── Detail panel ──────────────────────────────────────────── */
 
 .fp-detail-col {
-  position: fixed;
-  inset: 0;
-  z-index: 40;
+  flex: 0 0 480px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 40px 24px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
+  align-items: flex-start;
+  align-self: flex-start;
+  position: sticky;
+  top: 110px;
+  z-index: 7;
+  opacity: 1;
+  pointer-events: auto;
+  transition: none;
+  padding: 0;
+}
+
+.fp-detail-col[aria-hidden="true"] {
+  opacity: 1;
 }
 
 .fp-detail-col--open {
@@ -676,31 +705,20 @@ body.fp-detail-open {
 }
 
 .fp-detail-backdrop {
-  position: absolute;
-  inset: 0;
-  border: none;
-  background: rgba(26, 27, 9, 0.72);
-  cursor: pointer;
+  display: none;
 }
 
 .fp-detail {
-  width: min(100%, 640px);
-  max-width: 640px;
+  width: 480px;
+  max-width: 480px;
   position: relative;
-  z-index: 1;
-  min-height: 400px;
-  max-height: calc(100vh - 80px);
+  z-index: 8;
+  min-height: 610px;
+  max-height: none;
   background: var(--bg-light);
   display: flex;
   flex-direction: column;
-  overflow: auto;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
-  transform: translateY(20px) scale(0.98);
-  transition: transform 0.2s ease;
-}
-
-.fp-detail-col--open .fp-detail {
-  transform: translateY(0) scale(1);
+  overflow: hidden;
 }
 
 .fp-detail-header {
@@ -721,7 +739,7 @@ body.fp-detail-open {
 }
 
 .fp-detail-close {
-  display: inline-flex;
+  display: none;
   align-items: center;
   justify-content: center;
   width: 42px;
@@ -1474,17 +1492,49 @@ body.fp-detail-open {
     --hero-header-overlap: 156px;
   }
 
+  .page {
+    padding-top: 0;
+  }
+
   .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-    padding: 18px 0 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 18px 0 0;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .site-header--open .nav-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .site-header--open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-header--open .nav-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 
   .site-nav {
     width: 100%;
-    flex-wrap: wrap;
-    gap: 14px 16px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 18px 0 8px;
+  }
+
+  .site-header--open .site-nav {
+    display: flex;
+  }
+
+  .nav-link {
+    font-size: 1.125rem;
   }
 
   .btn-register {
@@ -1492,7 +1542,7 @@ body.fp-detail-open {
   }
 
   .hero-content {
-    padding: 48px 24px 72px;
+    padding: 36px 24px 72px;
     gap: 24px;
   }
 
@@ -1595,13 +1645,47 @@ body.fp-detail-open {
   }
 
   .fp-detail-col {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    justify-content: center;
+    align-items: center;
     padding: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .fp-detail-col[aria-hidden="true"] {
+    opacity: 0;
+  }
+
+  .fp-detail-col--open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .fp-detail-backdrop {
+    display: block;
+    position: absolute;
+    inset: 0;
+    border: none;
+    background: rgba(26, 27, 9, 0.72);
+    cursor: pointer;
   }
 
   .fp-detail {
     width: 100%;
     max-width: none;
     max-height: calc(100vh - 24px);
+    overflow: auto;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+    transform: translateY(20px) scale(0.98);
+    transition: transform 0.2s ease;
+  }
+
+  .fp-detail-col--open .fp-detail {
+    transform: translateY(0) scale(1);
   }
 
   .fp-detail-header {
@@ -1610,6 +1694,10 @@ body.fp-detail-open {
 
   .fp-detail-header .fp-detail-title {
     font-size: 20px;
+  }
+
+  .fp-detail-close {
+    display: inline-flex;
   }
 
   .fp-detail-image img {
